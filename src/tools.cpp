@@ -65,6 +65,14 @@ MatrixXd Tools::CalculateJacobian(const VectorXd& x_state) {
         float c2 = sqrt(c1);
         float c3 = (c1*c2);
 
+        if(fabs(px) < 0.01)
+        {
+            px = 0.1;
+        }
+        if(fabs(py) < 0.01)
+        {
+            py = 0.1;
+        }
         //check division by zero
         if(fabs(c1) < 0.0001){
             Hj <<    0, 0, 0, 0,

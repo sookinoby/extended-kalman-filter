@@ -28,14 +28,8 @@ void KalmanFilter::Predict() {
   TODO:
     * predict the state
   */
-  cout<<"-------------------Predict-----------------------------"<<"\n";
-
 
   x_ = F_ * x_;
-    cout<<x_;
-    cout<<"\n";
-    cout<<F_;
-    cout<<"\n";
   MatrixXd Ft = F_.transpose();
   P_ = F_ * P_ * Ft + Q_;
 
@@ -73,11 +67,9 @@ void KalmanFilter::UpdateEKF(const VectorXd &z) {
     float theta =  atan2(x_[1],x_[0]);
     while(theta < -M_PI) {
         theta += 2 * M_PI;
-        std::cout<<"-----------angle was low------------------------------------------------------------"<<"\n";
     }
     while(theta > M_PI) {
         theta -= 2 * M_PI;
-        std::cout<<"------------angle was high---------------------------------------------------------------------"<<"\n";
     }
    // std::cout<<"theta"<<theta<<"\n";
     float pho_hat = (x_[0]*x_[2] + x_[1]*x_[3]) / pho;
