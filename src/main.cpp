@@ -106,6 +106,7 @@ int main(int argc, char* argv[]) {
       iss >> ro_dot;
       meas_package.raw_measurements_ << ro, phi, ro_dot;
       iss >> timestamp;
+
       meas_package.timestamp_ = timestamp;
       measurement_pack_list.push_back(meas_package);
     }
@@ -169,7 +170,7 @@ int main(int argc, char* argv[]) {
 
   // compute the accuracy (RMSE)
   Tools tools;
-  cout << "Accuracy - RMSE:" << endl << tools.CalculateRMSE(estimations, ground_truth) << endl;
+  //cout << "Accuracy - RMSE:" << endl << tools.CalculateRMSE(estimations, ground_truth) << endl;
 
   // close files
   if (out_file_.is_open()) {
